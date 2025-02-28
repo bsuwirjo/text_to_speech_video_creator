@@ -8,7 +8,6 @@ if __name__ == "__main__":
 
     file_path = sys.argv[1]
 
-
     video_maker = Video_Maker(file_path)
 
     if video_maker.chunkstring() == 0:

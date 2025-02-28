@@ -46,10 +46,11 @@ class Video_Maker():
     def convert_all_to_speech(self):
         for i, text_chunk in enumerate(self.chunks):
             file_name = self.name + str(i) + ".mp3"
+            caption_name = self.name + str(i) + ".srt"
             print("Converting chunk " + str(i) + " to " + file_name)
             self.convert_to_speech(file_name, text_chunk)
-
-
+            print("Creating captions for, ", file_name)
+            self.convert_speech_to_caption(self.folder_path + file_name, self.folder_path + caption_name)
 
     #Function to split text into 4000 character blocks
     def chunkstring(self):
@@ -64,6 +65,17 @@ class Video_Maker():
             self.chunk_length -= 100
         
         print("Using chunk length of ", self.chunk_length, ". Last chunk is ", len(self.text) % self.chunk_length)
+    
+    def convert_speech_to_caption(self, audio_file_path, caption_file_path):
+        audio_file = open(audio_file_path, "rb")
+        transcription = self.client.audio.transcriptions.create(
+            model="whisper-1", 
+            file=audio_file, 
+            response_format="srt"
+        )
+
+        with open(caption_file_path, "a") as file:
+            file.write(transcription)
 
     def combine_audio_video(self):
         background_clips = ["background_clips/" + f for f in listdir("background_clips") if isfile(join("background_clips", f))]
