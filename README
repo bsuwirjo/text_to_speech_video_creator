@@ -1,0 +1,7 @@
+This repo allows you to convert text to speech using AI (open ai) and then overlay videos on top of them.
+
+Usage:
+video_downloader.py: This program allows you to enter a youtube url and will download the video from the url.
+python video_downloader.py folder url
+
+create_video.py: This program grabs text to speech and overlays videos from background clips into the audio files.
