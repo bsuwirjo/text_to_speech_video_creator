@@ -1,7 +1,25 @@
 This repo allows you to convert text to speech using AI (open ai) and then overlay videos on top of them.
 
+#Setup
+
+Get an api_key. email bsuwirjo@gmail.com
+
+Install conda
+run conda env update --name myenv --file environment.yml --prune
+
+#How to use:
+1. Activate your environment (conda activate myenv)
+2. Use the video downloader program or manually download videos to use as background videos and add them to background clips/.
+3. Grab a text story and create a folder as well as a text file in stories. Look at example_story.
+4. run create_video.py (look at usage below)
+
+
+
+
 Usage:
+create_video.py: This program grabs text to speech and overlays videos from background clips into the audio files.
+python create_video.py url/to/story.txt
+
 video_downloader.py: This program allows you to enter a youtube url and will download the video from the url.
 python video_downloader.py folder url
 
-create_video.py: This program grabs text to speech and overlays videos from background clips into the audio files.
